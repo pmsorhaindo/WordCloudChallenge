@@ -8,6 +8,9 @@ define([
     // Topic model definition
 	var TopicModel = Backbone.Model.extend({
         
+        defaults: {
+            "type": "topic"
+        },
         parse: function(response) {
             var setHash = {};
             setHash.label = response.label;
