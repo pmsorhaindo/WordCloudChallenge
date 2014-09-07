@@ -1,0 +1,28 @@
+<h2>Information on the topic: <% print(label) %></h2>
+
+<h3>Total mentions: <% print(volume) %></h3>
+Positive mentions: <span style="color:#3adf00">
+<% if(sentiments.positive) {print(sentiments.positive);}
+   else print(0); %>
+</span><br />
+Neutral mentions: <span style="color:#848484">
+<% if(sentiments.neutral) {print(sentiments.neutral)}
+   else print(0);%></span><br />
+Negative mentions: <span style="color:#ff0000">
+<% if(sentiments.negative) {print(sentiments.negative)}
+   else print(0);%></span><br /><br />
+    
+<h3>Mentions Breakdown by source: </h3>
+<ul>
+    <li>Blog: <% print(types.blog) %></li>
+    <li>Facebook: <% print(types.facebook) %></li>
+    <li>Forum: <% print(types.forum) %></li>
+    <li>General: <% print(types.general) %></li>
+    <li>Image: <% print(types.image) %></li>
+    <li>News: <% print(types.news) %></li>
+    <li>Review: <% print(types.review) %></li>
+    <li>Twitter: <% print(types.twitter) %></li>
+    <li>Video: <% print(types.video) %></li>
+</ul>
+
+<a href='#cloud'>[Close]</a>
