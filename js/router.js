@@ -23,14 +23,15 @@ define([
 	var initialize = function(){
         var app_router = new AppRouter;
         var topicsList = new TopicsCollection();
+        // Grab JSON topics data 
         topicsList.fetch({reset: true});
         topicsList.on("reset", this.render, this);
         
 		// Pass details label via param.
-		app_router.on('route:details',function(label){ // TODO change to id.
+		app_router.on('route:details',function(id){ // TODO change to id.
             // Show details view for a selected topic
-            console.log('Show details: '+label);
-            var model = topicsList.get(label);
+            console.log('Show details: '+id);
+            var model = topicsList.get(id);
             var topicDetailsView = new TopicDetails({el: $("#details"), model: model});
             
 		});
@@ -47,6 +48,7 @@ define([
 			console.log('No route:',actions);
 		});
         
+        // Begin recording history for Router's back functionality
 		Backbone.history.start();
         
         // Display Topic Cloud
