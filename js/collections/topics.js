@@ -16,7 +16,10 @@ define([
         },
 
         parse: function(response){
-            return response.topics;
+            // from file.
+            if(response.topics) return response.topics;
+            // from server
+            else return response.response.topics;
         }
         
     });

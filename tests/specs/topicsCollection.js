@@ -79,6 +79,58 @@ define([
 
         });
         
+        describe("when fetching collection from server", function() {
+
+            beforeEach(function() {
+                this.fixture = this.fixtures.Topics.valid;
+                this.fixtureTopics = this.fixture.response.topics;
+                this.server = sinon.fakeServer.create();
+                
+                this.validResponse = function(responseText) {
+                    return [
+                        200,
+                        {"Content-Type": "application/json"},
+                        JSON.stringify(responseText)
+                    ];
+                };  
+                
+                this.server.respondWith(
+                    "GET",
+                    "../res/topics.json",
+                    this.validResponse(this.fixture)
+                );
+            });
+
+            afterEach(function() {
+                this.server.restore();
+            });
+
+            it("should make the correct request", function() {
+                this.topics.fetch();
+                expect(this.server.requests.length).toEqual(1);
+                expect(this.server.requests[0].method).toEqual("GET");
+                expect(this.server.requests[0].url).toEqual("../res/topics.json");
+            });
+
+            it("should parse the topics from the response", function() {
+                this.topics.fetch();
+                this.server.respond();
+                expect(this.topics.length).toEqual(this.fixture.response.topics.length);
+                // id's do not have to be the same as parsed to remove ''s /'s and whitespace
+                expect(this.topics.at(0).get('label')).toEqual(this.fixture.response.topics[0].label)
+            });
+
+            it("should be of the same type, 'topic' or otherwise", function() {
+                this.topics.fetch();
+                this.server.respond();
+                var len = this.fixtureTopics.length;
+                while (len--) {
+                    expect(this.topics.at(len).get('type')).toEqual(this.fixture.response.topics[len].type);
+                }
+            });
+
+        });
+        
 
     });
 

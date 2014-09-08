@@ -42,9 +42,11 @@ require(['underscore', 'jquery', 'jasmine-html'], function(_, $, jasmine){
 
     var specs = [];
 
+    specs.push('../tests/specs/topics.fixture');
     specs.push('../tests/specs/topicModel');
     specs.push('../tests/specs/topicsCollection');
-    
+    specs.push('../tests/specs/topicDetailsView');
+    specs.push('../tests/specs/topicsCloudView');
 
     $(function(){
         require(specs, function(){
