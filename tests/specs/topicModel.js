@@ -1,5 +1,6 @@
-define(['models/topic'], function(Topic) {
-
+define([
+    'models/topic'
+], function(Topic) {
     return describe('Topic Model', function() {
 
         beforeEach(function() {
