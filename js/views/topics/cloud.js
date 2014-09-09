@@ -1,4 +1,17 @@
-// views/topics/cloud.js
+/**
+ * @fileOverview TopicCloudView implements the d3 layout - word cloud library developed by.. 
+ * It collates information from all topics provided in a TopicsCollection object and declares rules as to how the cloud should be displayed.
+ *
+ * @requires Backbone.js
+ * @requires Underscore.js
+ * @requires Topic.js
+ * @requires d3.js
+ * @require d3.layout.cloud.js
+ * @require TopicsCollection.js
+ * @author <a href="mailto:pmsorhaindo@gmail.com">Paul-Michael Sorhaindo</a>
+ * @version 0.0.1
+ */
+
 
 define([
     'jquery',
@@ -11,7 +24,12 @@ define([
     
 ], function($, _, Backbone, TopicsCollection, topicCloudTemplate, d3, d3cloud){
     
-    // Multiple topic view definition (the Cloud)
+    // 
+    /**
+     * TopicCloudView.
+     * Multiple topic view definition (the Cloud)
+     *
+     */
     var TopicCloudView = Backbone.View.extend({
         
         // Flexible 
@@ -20,7 +38,11 @@ define([
         height: 500, // height of cloud.
         posSentimentLowerBound: 60, // at which point higher values will be green.
         negSentimentUpperBound: 40, // at which point lower values will be red.
-
+        
+        /**
+         *
+         * Marshall data for use by the d3.layout.cloud library.
+         */
         prepareCloud: function(w,h,posSentLower,negSentUpper){
             // Min and max Volumes from the TopicCollection
             var minVolume = this.collection.min(function(model) {
@@ -85,7 +107,10 @@ define([
             
         },
         
-        // Render view - if more than two words
+        /**
+         *
+         * Render view - if more than two words
+         */
         render: function(){
             if(this.collection.models.length >  2)
             {
@@ -95,7 +120,10 @@ define([
             }
         },
         
-        // assign DOM element and colletion and collection reset callback.
+        /**
+         * Initialize.
+         * Assigns DOM element and colletion and collection reset callback.
+         */        
         initialize: function(options){
             this.el = options.el;
             this.collection = options.collection;
@@ -103,7 +131,9 @@ define([
         }
     });
     
-    // Returning Cloud View
+    /**
+     * Returning TopicCloudView
+     */
     return TopicCloudView;
 
 });
