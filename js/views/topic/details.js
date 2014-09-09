@@ -5,7 +5,7 @@
  * @requires Backbone.js
  * @requires Underscore.js
  * @requires Topic.js
- * @author <a href="mailto:pmsorhaindo@gmail.com">Paul-Michael Sorhaindo</a>
+ * @author Paul-Michael Sorhaindo
  * @version 0.0.1
  */
 
@@ -17,11 +17,16 @@ define([
   'text!templates/details/list.html'
 ], function($, _, Backbone, Topic, topicDetailsTemplate){
     
-    // Single Topic details view
+    /**
+     * Constructing a single TopicDetails View
+     * @namepsace TopicDetailsView
+     * @constructor
+     */
     var TopicDetailsView = Backbone.View.extend({
         
         /**
          * Render's the details view by compiling a HTML template using underscore.js
+         * @public
          */
         render: function(){
             // Compile the template using Underscores micro-templating
@@ -36,6 +41,7 @@ define([
          * Initializes the model providing it with a DOM element to hook on to,
          * and a model from which to retrieve data.
          * Reloads the index.html if the supplied model is null.
+         * @public
          * @param {Object} - el: DOM element and model: Topic. 
          */
         initialize: function(options){

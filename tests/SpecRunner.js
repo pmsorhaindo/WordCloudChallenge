@@ -5,6 +5,8 @@ require.config({
         jquery: 'libs/jquery/jquery-1.11.1',
         underscore: 'libs/underscore/underscore',
         backbone: 'libs/backbone/backbone',
+        d3: 'libs/d3/d3',
+        d3cloud: 'libs/d3/layouts/d3.layout.cloud',
         jasmine: '/js/libs/jasmine/jasmine',
         'jasmine-html': '/js/libs/jasmine/jasmine-html',
         spec: '../tests/specs/'
@@ -23,11 +25,18 @@ require.config({
         'jasmine-html': {
             deps: ['jasmine'],
             exports: 'jasmine'
-        }     
+        },
+        d3: {
+            exports: 'd3'
+        },
+        d3cloud: {
+            deps: ['d3'],
+            exports: 'd3cloud'
+        }
     }
 });
 
-require(['underscore', 'jquery', 'jasmine-html'], function(_, $, jasmine){
+require(['underscore', 'jquery', 'jasmine-html','d3','d3cloud'], function(_, $, jasmine,d3,d3cloud){
 
     var jasmineEnv = jasmine.getEnv();
     jasmineEnv.updateInterval = 1000;

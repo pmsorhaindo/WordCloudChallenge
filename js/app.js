@@ -4,7 +4,7 @@
  * @requires jQuery.js
  * @requires Backbone.js
  * @requires Underscore.js
- * @author <a href="mailto:pmsorhaindo@gmail.com">Paul-Michael Sorhaindo</a>
+ * @author Paul-Michael Sorhaindo
  * @version 0.0.1
  */
 

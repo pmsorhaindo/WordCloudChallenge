@@ -4,8 +4,8 @@
  *
  * @requires Backbone.js
  * @requires Underscore.js
- * @author <a href="mailto:pmsorhaindo@gmail.com">Paul-Michael Sorhaindo</a>
- * @version 0.0.q
+ * @author Paul-Michael Sorhaindo
+ * @version 0.0.1
  */
 
 define([
@@ -15,22 +15,22 @@ define([
     
     /**
      * Creates an instance of Topic.
-     *
+     * @namespace TopicModel
      * @constructor
      * @this {TopicModel}
      */
 	var TopicModel = Backbone.Model.extend({
         
         /**
-         *
          * @default
+         * @private
          */
         defaults: {
             "type": "topic"
         },
         /**
          * Parses the response when fetching a collection from URL
-         *
+         * @public
          * @return{Object} An object hashing the values of a Topic.
          */
         parse: function(response) {

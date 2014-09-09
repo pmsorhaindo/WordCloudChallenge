@@ -3,7 +3,7 @@
         "allowUnknownTags": true
     },
     "source": {
-        "exclude": ["WordCloudChallenge/hs/libs/"],
+        "exclude": ["WordCloudChallenge/js/libs/"],
         "includePattern": ".+\\.js(doc)?$",
         "excludePattern": "(^|\\/|\\\\)_"
     },
